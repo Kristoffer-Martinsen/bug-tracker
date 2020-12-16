@@ -15,7 +15,7 @@ function App() {
       <Header/>
         <Container fluid>
           <Row>
-            <Col xs={1}>
+            <Col xs={2}>
               <ProjectList/>
             </Col>
             <Col xs={2}>
