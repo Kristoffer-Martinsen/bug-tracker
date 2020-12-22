@@ -23,7 +23,7 @@ function ProjectCreationModal(props) {
               <Form.Label>Project Name:</Form.Label>
               <Form.Control type="text" onChange={props.onChange}></Form.Control>
               <Form.Label>Project Description</Form.Label>
-              <Form.Control as="textarea"></Form.Control>
+              <Form.Control as="textarea" onChange={props.onChange}></Form.Control>
           </Form.Group>
         </Form>
       </Modal.Body>
