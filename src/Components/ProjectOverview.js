@@ -1,16 +1,14 @@
 import React from 'react';
-import Nav from 'react-bootstrap/Nav';
-import Tab from 'react-bootstrap/Tab';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Backlog from './Backlog';
+import {Nav, Tab, Row, Col} from 'react-bootstrap';
 
 function ProjectOverview(props) {
     return (
         <div>
-            <h1>{props.name}</h1>
+            <h1>{props.projectName}</h1>
             <Tab.Container id="OverviewList" defaultActiveKey="Roadmap">
                 <Row>
-                    <Col>
+                    <Col xs={2}>
                         <Nav variant="pills" className="flex-column">
                             <Nav.Item>
                                 <Nav.Link eventKey="Roadmap">Roadmap</Nav.Link>
@@ -35,7 +33,7 @@ function ProjectOverview(props) {
                                 <h1>Roadmap</h1>
                             </Tab.Pane>
                             <Tab.Pane eventKey="Backlog">
-                                <h1>Backlog</h1>
+                                <Backlog/>
                             </Tab.Pane>
                             <Tab.Pane eventKey="Board">
                                 <h1>Board</h1>

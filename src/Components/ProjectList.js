@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
-import Button from 'react-bootstrap/Button';
+import {Button, ListGroup, Container, Row, Col} from 'react-bootstrap';
 import ProjectCreationModal from './ProjectCreationModal';
 import ProjectOverview from './ProjectOverview';
-import { ListGroup } from 'react-bootstrap';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+
 
 const InitialProjectList = [
     
@@ -30,13 +27,23 @@ function ProjectList() {
         setModalShow(false);
     }
 
+    function initialActiveProject() {
+        let activeProject = '';
+        if (!InitialProjectList.length) {
+            activeProject = '#';
+        } else {
+             activeProject = '#'.concat(InitialProjectList[0].name);
+        }
+        return activeProject;
+    }
+
     return (
         <div className="ProjectList">
             <h1>USER</h1>
-            <Container>
+            <Container fluid>
                 <Row>
-                    <Col>
-                        <Button variant="primary" onClick={() => setModalShow(true)}>
+                    <Col xs={2}>
+                        <Button variant="primary" className="my-2" onClick={() => setModalShow(true)}>
                             Create Project
                         </Button>
                         <ProjectCreationModal
@@ -46,14 +53,19 @@ function ProjectList() {
                             onChange = {handleChange}
                             onAdd = {handleAdd}
                         />
-                        <ListGroup as="ul">
+                        <ListGroup as="ul" defaultActiveKey={initialActiveProject}>
                             {projectList.map((project) => (
-                                <ListGroup.Item key={project.id}>{project.name}</ListGroup.Item>
+                                <ListGroup.Item 
+                                action
+                                key={project.id}
+                                href={'#'.concat(project.name)}>
+                                    {project.name}
+                                </ListGroup.Item>
                             ))}
                         </ListGroup>
                     </Col>
                     <Col>
-                        <ProjectOverview />
+                        <ProjectOverview projectName = {"#"}/>
                     </Col>
                 </Row>
             </Container>
