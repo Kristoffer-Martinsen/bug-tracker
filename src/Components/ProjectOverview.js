@@ -1,5 +1,7 @@
 import React from 'react';
 import Backlog from './Backlog';
+import Board from './Board';
+import Roadmap from './Roadmap';
 import {Nav, Tab, Row, Col} from 'react-bootstrap';
 
 function ProjectOverview(props) {
@@ -8,7 +10,7 @@ function ProjectOverview(props) {
             <h1>{props.projectName}</h1>
             <Tab.Container id="OverviewList" defaultActiveKey="Roadmap">
                 <Row>
-                    <Col xs={2}>
+                    <Col xs={2} className="border-right border-top">
                         <Nav variant="pills" className="flex-column">
                             <Nav.Item>
                                 <Nav.Link eventKey="Roadmap">Roadmap</Nav.Link>
@@ -27,16 +29,16 @@ function ProjectOverview(props) {
                             </Nav.Item>
                         </Nav>
                     </Col>
-                    <Col>
+                    <Col className="border-top">
                         <Tab.Content>
                             <Tab.Pane eventKey="Roadmap">
-                                <h1>Roadmap</h1>
+                                <Roadmap/>
                             </Tab.Pane>
                             <Tab.Pane eventKey="Backlog">
                                 <Backlog/>
                             </Tab.Pane>
                             <Tab.Pane eventKey="Board">
-                                <h1>Board</h1>
+                                <Board/>
                             </Tab.Pane>
                             <Tab.Pane eventKey="Code">
                                 <h1>Code</h1>

@@ -42,8 +42,8 @@ function ProjectList() {
             <h1>USER</h1>
             <Container fluid>
                 <Row>
-                    <Col xs={2}>
-                        <Button variant="primary" className="my-2" onClick={() => setModalShow(true)}>
+                    <Col xs={2} className="border-right">
+                        <Button variant="primary" className="my-2 " onClick={() => setModalShow(true)}>
                             Create Project
                         </Button>
                         <ProjectCreationModal

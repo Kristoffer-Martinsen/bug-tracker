@@ -1,6 +1,6 @@
 import React, { useState }from 'react';
 import { v4 as uuidv4} from 'uuid';
-import {Button, ListGroup, Form } from 'react-bootstrap';
+import {Button, ListGroup, Form, Row } from 'react-bootstrap';
 
 const initialIssueList = [
 
@@ -10,10 +10,6 @@ const initialIssueList = [
 export default function Backlog() {
     const [issueList, setIssueList] = useState(initialIssueList);
     const [issueName, setIssueName] = useState('');
-
-    function handleIssueNameChange(e) {
-        setIssueName(e.target.value);
-    }
 
     function handleAddIssue() {
         const newIssueList = issueList.concat({issueName, id: uuidv4()})
@@ -33,17 +29,20 @@ export default function Backlog() {
                         </ListGroup.Item>
                 )))}
             </ListGroup>
-            <Button
-                onClick={handleAddIssue}>
-                    Add Issue
-            </Button>
-            <Form>
-                <Form.Control 
-                    type="text"
-                    value = {issueName}
-                    onChange={(e) => setIssueName(e.target.value)}>
-                </Form.Control>
-            </Form>
+            <Row className="ml-1">
+                <Button
+                    className="mr-2"
+                    onClick={handleAddIssue}>
+                        Add Issue
+                </Button>
+                <Form>
+                    <Form.Control 
+                        type="text"
+                        value = {issueName}
+                        onChange={(e) => setIssueName(e.target.value)}>
+                    </Form.Control>
+                </Form>
+            </Row>
         </div>
     )
 }
